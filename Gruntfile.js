@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                      // Workaround to create logs directory
                     {
                         expand: true,
-                        src: ['logs/dummy.txt'],
+                        src: ['logs/*'],
                         dest: 'dist/app/'
                     }
                         ]
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
                 options: {
                     jshintrc: 'tests/.jshintrc'
                 },
-                src: ['test/{,*/}*.js']
+                src: ['tests/{,*/}*.js']
             }
         },
 
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
                     reporter: 'spec',
                     run: true
                 },
-                src: ['test/*.js']
+                src: ['tests/*.js']
             }
         },
 

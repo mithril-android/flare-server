@@ -6,7 +6,12 @@ var logger = new(winston.Logger)({
     transports: [
       new winston.transports.File({
             filename: config.logger.path,
-            level: config.logger.levels
+            level: config.logger.levels,
+            handleExceptions: true,
+            json: true,
+            maxsize: 5242880, //5MB
+            maxFiles: 5,
+            colorize: false
         })
     ],
     exceptionHandlers: [

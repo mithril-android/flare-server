@@ -3,7 +3,7 @@ module.exports = {
     'logger': {
         'path': 'logs/flares.log',
         'exception': 'logs/exceptions.log',
-        'level' : 'info'
+        'levels' : 'info'
     },
 
     'ip': 'localhost',
