@@ -129,6 +129,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
 
     // Run the default task for the grunt.
-    grunt.registerTask('default', ['jshint', 'clean', 'copy', 'mochaTest', 'cssmin', 'uglify', 'watch']);
+    grunt.registerTask('default', ['jshint', 'clean', 'copy', 'mochaTest', 'cssmin', 'uglify', 'concurrent']);
 
 };

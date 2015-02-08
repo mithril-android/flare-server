@@ -1,8 +1,9 @@
 module.exports = {
 
     'logger': {
-        'api': 'logs/api.log',
-        'exception': 'logs/exceptions.log'
+        'path': 'logs/flares.log',
+        'exception': 'logs/exceptions.log',
+        'level' : 'info'
     },
 
     'ip': 'localhost',

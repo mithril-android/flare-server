@@ -6,8 +6,7 @@ var logger = new(winston.Logger)({
     transports: [
       new winston.transports.File({
             filename: config.logger.path,
-            level: config.logger.level,
-
+            level: config.logger.levels
         })
     ],
     exceptionHandlers: [

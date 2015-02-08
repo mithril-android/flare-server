@@ -1,0 +1,2 @@
+this is just a dummy file.
+It solves the logs folder creation problem with winston.
