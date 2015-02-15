@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express'),
-    logger = require('./logger');
+    logger = require('./logger'),
+    gamesData = require('./models/games');
 
 module.exports = function (app) {
 
@@ -12,17 +13,12 @@ module.exports = function (app) {
 
 
     /*
-
-    The specification for the Rest Api which we are going to use.
-    Route                      HTTP Verb         Description
+    The specification for the api which we are going to use
+        Route                      HTTP Verb         Description
     /api/games                  GET            Get all the games.
     /api/games/:game_name       GET            Get a single game details.
-    
-    The url /api/games can handle query parameters --
-        The query parameters can be accessed by req.query.color for query on color
-        count - specify the count of games to return
-        sortfield - the field to sort the game list
-        
+    /api/search/:name           GET            Search for specific game etc.
+
     */
 
     //Create a router instance for the api to handle all our requests.
@@ -34,7 +30,7 @@ module.exports = function (app) {
     router.use(function (req, res, next) {
         //The placeholder middleware to process all the requests to the api.
         //Later to be replaced by more useful system
-        logger('Received a request');
+        /*logger('Received a request');*/
         next(); // make sure we go to the next routes and don't stop here
     });
 
@@ -47,17 +43,31 @@ module.exports = function (app) {
     // create accessed at GET http://localhost:8000/api/games)
     router.route('/games')
         .get(function (req, res) {
+            res.send(gamesData);
+        });
+
+    router.route('/games/:gameId')
+        .get(function (req, res) {
+            var done = false;
+            var id = req.params.gameId;
+            var games = gamesData.games;
+            var arrayLength = games.length;
+            for (var i = 0; i < arrayLength; i++) {
+                if(games[i]._id == id){
+                  done = true;
+                  res.json(games[i]);
+                    break;
+                }
+            }
+            if(!done){
+            res.status(404).send('Not found');
+            }
+        });
+
+    router.route('/search/:name')
+        .get(function (req, res) {
             // TODO put some data to get on projects
             logger(req + ' ' + res);
         });
 
-    router.route('/games/:game_name')
-        .get(function (req, res) {
-            // TODO get data for specific project
-            logger(req + ' ' + res);
-        })
-        .post(function (req, res) {
-            // TODO create or update data for specific project
-            logger(req + ' ' + res);
-        });
 };

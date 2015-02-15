@@ -4,7 +4,7 @@ This is the server side component for the flares android app.
 The specification for the Rest Api which will be provided.
     Route                      HTTP Verb         Description
     /api/games                  GET            Get all the games.
-    /api/games/:game_name       GET            Get a single game details.
+    /api/games/:game_id       GET              Get a single game details.
     /api/search/:name           GET            Search for specific game etc.
 
 
@@ -35,7 +35,7 @@ The specification for the Rest Api which will be provided.
                     -metacritic  metacritic ratings for game
                  - released      release date or year
 
-    /api/games/:game_name       GET            Get a single game details.
+    /api/games/:game_id       GET            Get a single game details.
         Expected output -
                 Field            Description
                 game
