@@ -76,3 +76,8 @@ The specification for the Rest Api which will be provided.
                  - ratings
                     -metacritic  metacritic ratings for game
                  - released      release date or year
+                 
+To setup the server locally -
+1 Install nodejs
+2 do "npm install"
+3 start by "npm start"
